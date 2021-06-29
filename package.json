@@ -1,9 +1,11 @@
 {
   "name": "weapp-compiler-cli",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "secondary packaging https://developers.weixin.qq.com/miniprogram/dev/devtools/cli.html",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "postinstall": "init.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/youpinyao/weapp-cli.git"

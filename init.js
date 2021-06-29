@@ -1,6 +1,6 @@
 const fs = require('fs-extra');
 const path = require('path');
-const packagePath = path.resolve(process.cwd(), 'package.json');
+const packagePath = path.resolve(__dirname, '../../', 'package.json');
 
 if (fs.existsSync(packagePath)) {
   const package = fs.readJSONSync(packagePath);

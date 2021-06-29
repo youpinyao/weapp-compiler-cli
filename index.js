@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 
 const program = require('commander');
-const fs = require('fs');
+const fs = require('fs-extra');
 const path = require('path');
 const commanderActionToExecArgs = require('./src/commanderActionToExecArgs');
 const exec = require('./src/exec');
 const getGitTagAndMessage = require('./src/getGitTagAndMessage');
 
 program.version(
-  fs.readFileSync(path.resolve(__dirname, 'package.json')).toJSON().version
+  fs.readJSONSync(path.resolve(__dirname, 'package.json')).version
 );
 
 program

@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = require('fs-extra');
 const path = require('path');
 const spawn = require('cross-spawn');
 
@@ -14,6 +14,18 @@ if (process.platform === 'win32') {
       cli = `${p}${win32Cli}`;
     }
   });
+}
+
+if (fs.existsSync(path.resolve(process.cwd(), 'package.json'))) {
+  const package = fs.readJSONSync(path.resolve(process.cwd(), 'package.json'));
+
+  if (package.weappCliConfig && package.weappCliConfig.path) {
+    cli = package.weappCliConfig.path;
+  }
+}
+
+if (!fs.existsSync(cli)) {
+  throw new Error(`${cli} is no exist`)
 }
 
 module.exports = (

@@ -1,0 +1,27 @@
+{
+  "name": "weapp-cli",
+  "version": "0.0.1",
+  "description": "secondary packaging https://developers.weixin.qq.com/miniprogram/dev/devtools/cli.html",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/youpinyao/weapp-cli.git"
+  },
+  "bin": {
+    "weapp-cli": "index.js"
+  },
+  "author": "youpinyao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/youpinyao/weapp-cli/issues"
+  },
+  "homepage": "https://github.com/youpinyao/weapp-cli#readme",
+  "dependencies": {
+    "commander": "^8.0.0",
+    "cross-spawn": "^7.0.3"
+  },
+  "devDependencies": {
+    "eslint": "^7.29.0"
+  }
+}

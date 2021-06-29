@@ -36,5 +36,7 @@ module.exports = (
 ) => {
   args.push('--project', path.resolve(process.cwd(), 'dist'));
 
+  console.log(cli, args);
+
   return spawn.sync(cli, args, options);
 };

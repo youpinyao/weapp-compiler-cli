@@ -41,7 +41,7 @@ program
   .action((args) => {
     const { tag, message } = getGitTagAndMessage();
 
-    if (!tag) {
+    if (!tag && (!args.version || !args.desc)) {
       throw new Error('当前 git 还没有打 tag');
     }
 

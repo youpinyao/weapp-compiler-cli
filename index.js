@@ -54,4 +54,17 @@ program
     exec(['upload', ...commanderActionToExecArgs(args)]);
   });
 
+program.command('open').action((args) => {
+  exec(['open', ...commanderActionToExecArgs(args)]);
+});
+program.command('close').action((args) => {
+  exec(['close', ...commanderActionToExecArgs(args)]);
+});
+program.command('quit').action((args) => {
+  exec(['quit', ...commanderActionToExecArgs(args)]);
+});
+program.command('reset-fileutils').action((args) => {
+  exec(['reset-fileutils', ...commanderActionToExecArgs(args)]);
+});
+
 program.parse(process.argv);

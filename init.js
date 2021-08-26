@@ -4,19 +4,26 @@ const packagePath = path.resolve(__dirname, '../../', 'package.json');
 
 if (fs.existsSync(packagePath)) {
   const package = fs.readJSONSync(packagePath);
+  const scripts = {
+    'weapp-cli:upload': 'weapp-cli upload',
+    'weapp-cli:preview': 'weapp-cli preview',
+    'weapp-cli:open': 'weapp-cli open',
+    'weapp-cli:close': 'weapp-cli close',
+    'weapp-cli:quit': 'weapp-cli quit',
+    'weapp-cli:reset-fileutils': 'weapp-cli reset-fileutils',
+  }
   let hasChange = false;
 
   if (!package.scripts) {
     package.scripts = {};
   }
-  if (!package.scripts['weapp-cli:upload']) {
-    package.scripts['weapp-cli:upload'] = 'weapp-cli upload';
-    hasChange = true;
-  }
-  if (!package.scripts['weapp-cli:preview']) {
-    package.scripts['weapp-cli:preview'] = 'weapp-cli preview';
-    hasChange = true;
-  }
+
+  Object.keys(scripts).forEach(key => {
+    if(!package.scripts[key]) {
+      package.scripts[key] = scripts[key];
+      hasChange = true;
+    }
+  })
 
   if (hasChange) {
     fs.writeFileSync(packagePath, JSON.stringify(package, null, 2));

@@ -45,3 +45,34 @@ weapp-cli preview
 ```cmd
 weapp-cli upload
 ```
+
+## open 启动工具
+
+- [官方 API](https://developers.weixin.qq.com/miniprogram/dev/devtools/cli.html#启动工具)
+
+```cmd
+weapp-cli open
+```
+
+## open 关闭项目窗口
+
+- [官方 API](https://developers.weixin.qq.com/miniprogram/dev/devtools/cli.html#关闭项目窗口)
+
+```cmd
+weapp-cli close
+```
+
+## open 关闭工具
+
+- [官方 API](https://developers.weixin.qq.com/miniprogram/dev/devtools/cli.html#关闭工具)
+
+```cmd
+weapp-cli quit
+```
+## open 重建文件监听
+
+- [官方 API](https://developers.weixin.qq.com/miniprogram/dev/devtools/cli.html#重建文件监听)
+
+```cmd
+weapp-cli reset-fileutils
+```

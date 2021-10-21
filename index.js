@@ -1,10 +1,12 @@
 #!/usr/bin/env node
 
 const program = require('commander');
+const { Confirm } = require('enquirer');
 const fs = require('fs-extra');
 const path = require('path');
 const commanderActionToExecArgs = require('./src/commanderActionToExecArgs');
 const exec = require('./src/exec');
+const getEnv = require('./src/getEnv');
 const getGitTagAndMessage = require('./src/getGitTagAndMessage');
 
 program.version(
@@ -38,8 +40,23 @@ program
     '-i, --info-output <info output>',
     '可选。指定后，会将本次上传的额外信息以 json 格式输出至指定路径，如代码包大小、分包大小信息。'
   )
-  .action((args) => {
+  .action(async (args) => {
     const { tag, message } = getGitTagAndMessage();
+    const { env } = getEnv();
+
+    // 如果upload 的是测试版本，就提示选择是否继续
+    if (env === 'development') {
+      const res = await new Confirm({
+        name: '确认',
+        message: '当前为 development，是否继续执行？',
+      }).run();
+      if (res === false) {
+        console.log('------------');
+        console.log('已取消执行');
+        console.log('------------');
+        return;
+      }
+    }
 
     if (!tag && (!args.version || !args.desc)) {
       throw new Error('当前 git 还没有打 tag');

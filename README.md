@@ -23,8 +23,9 @@ Windows: <安装路径>/cli.bat
 
 {
   "weappCliConfig": {
-    "path": "/Applications/wechatwebdevtools.app/Contents/MacOS/cli",
-    "path": "C:\\Program Files (x86)\\Tencent\\微信web开发者工具\\cli.bat"
+    "cliPath": "/Applications/wechatwebdevtools.app/Contents/MacOS/cli",
+    "cliPath": "C:\\Program Files (x86)\\Tencent\\微信web开发者工具\\cli.bat",
+    "projectDir": path.resolve(process.cwd(), "dist")
   }
 }
 ```
@@ -69,6 +70,7 @@ weapp-cli close
 ```cmd
 weapp-cli quit
 ```
+
 ## open 重建文件监听
 
 - [官方 API](https://developers.weixin.qq.com/miniprogram/dev/devtools/cli.html#重建文件监听)

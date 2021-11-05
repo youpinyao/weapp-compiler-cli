@@ -11,6 +11,8 @@ if (fs.existsSync(packagePath)) {
     'weapp-cli:close': 'weapp-cli close',
     'weapp-cli:quit': 'weapp-cli quit',
     'weapp-cli:reset-fileutils': 'weapp-cli reset-fileutils',
+    'weapp-ci:upload': 'weapp-cli upload',
+    'weapp-ci:preview': 'weapp-cli preview'
   }
   let hasChange = false;
 

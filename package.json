@@ -1,17 +1,18 @@
 {
   "name": "weapp-compiler-cli",
-  "version": "0.0.13",
-  "description": "secondary packaging https://developers.weixin.qq.com/miniprogram/dev/devtools/cli.html",
+  "version": "1.0.0",
+  "description": "secondary packaging https://developers.weixin.qq.com/miniprogram/dev/devtools/cli.html and https://developers.weixin.qq.com/miniprogram/dev/devtools/ci.html",
   "main": "index.js",
   "scripts": {
-    "postinstall": "node init.js"
+    "postinstall": "node src/init.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/youpinyao/weapp-compiler-cli.git"
   },
   "bin": {
-    "weapp-cli": "index.js"
+    "weapp-cli": "cli.js",
+    "weapp-ci": "ci.js"
   },
   "author": "youpinyao",
   "license": "ISC",
@@ -22,8 +23,11 @@
   "dependencies": {
     "commander": "^8.0.0",
     "cross-spawn": "^7.0.3",
+    "dayjs": "^1.10.7",
     "enquirer": "^2.3.6",
-    "fs-extra": "^10.0.0"
+    "fs-extra": "^10.0.0",
+    "miniprogram-ci": "^1.6.1",
+    "react-dev-utils": "^11.0.4"
   },
   "devDependencies": {
     "eslint": "^7.29.0"

@@ -25,7 +25,8 @@ Windows: <安装路径>/cli.bat
   "weappCliConfig": {
     "cliPath": "/Applications/wechatwebdevtools.app/Contents/MacOS/cli",
     "cliPath": "C:\\Program Files (x86)\\Tencent\\微信web开发者工具\\cli.bat",
-    "projectDir": path.resolve(process.cwd(), "dist")
+    "projectPath": "dist",
+    "privateKeyPath": "private.key"
   }
 }
 ```

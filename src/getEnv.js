@@ -1,18 +1,18 @@
 const path = require('path');
 const fs = require('fs-extra');
-const { projectDir } = require('./config');
+const { projectPath } = require('./config');
+const ENV = require('./ENV');
+const envPath = path.join(projectPath, '.weapp');
+let env = {};
 
-module.exports = () => {
-  const envPath = path.join(projectDir, '.weapp');
-  let env = {};
-
-  if (fs.existsSync(envPath)) {
-    try {
-      env = fs.readJSONSync(envPath) || {};
-    } catch (error) {
-      // console.log(error);
-    }
+if (fs.pathExistsSync(envPath)) {
+  try {
+    env = fs.readJSONSync(envPath) || {
+      env: ENV.UNKOWN,
+    };
+  } catch (error) {
+    // console.log(error);
   }
+}
 
-  return env;
-};
+module.exports = () => env;

@@ -1,13 +1,12 @@
 #!/usr/bin/env node
 
 const program = require('commander');
-const { Confirm } = require('enquirer');
 const fs = require('fs-extra');
 const path = require('path');
+const checkEnv = require('./src/checkEnv');
 const commanderActionToExecArgs = require('./src/commanderActionToExecArgs');
+const convertVersionAndDesc = require('./src/convertVersionAndDesc');
 const exec = require('./src/exec');
-const getEnv = require('./src/getEnv');
-const getGitTagAndMessage = require('./src/getGitTagAndMessage');
 
 program.version(
   fs.readJSONSync(path.resolve(__dirname, 'package.json')).version
@@ -31,44 +30,17 @@ program
 
 program
   .command('upload')
-  .option(
-    '-v, --version <version>',
-    '上传代码，version 指定版本号，project_root 指定项目根路径。'
-  )
+  .option('-v, --version <version>', '上传代码，version 指定版本号。')
   .option('-d, --desc <desc>', '上传代码时的备注。')
   .option(
     '-i, --info-output <info output>',
     '可选。指定后，会将本次上传的额外信息以 json 格式输出至指定路径，如代码包大小、分包大小信息。'
   )
   .action(async (args) => {
-    const { tag, message } = getGitTagAndMessage();
-    const { env } = getEnv();
-
     // 如果upload 的是测试版本，就提示选择是否继续
-    if (env === 'development') {
-      const res = await new Confirm({
-        name: '确认',
-        message: '当前为 development，是否继续执行？',
-      }).run();
-      if (res === false) {
-        console.log('------------');
-        console.log('已取消执行');
-        console.log('------------');
-        return;
-      }
-    }
+    await checkEnv();
 
-    if (!tag && (!args.version || !args.desc)) {
-      throw new Error('当前 git 还没有打 tag');
-    }
-
-    if (!args.version) {
-      args.version = tag;
-    }
-    if (!args.desc) {
-      args.desc = message || tag;
-    }
-    exec(['upload', ...commanderActionToExecArgs(args)]);
+    exec(['upload', ...commanderActionToExecArgs(convertVersionAndDesc(args))]);
   });
 
 program.command('open').action((args) => {

@@ -28,7 +28,7 @@ async function upload({ version, desc }) {
   return uploadResult;
 }
 
-async function preview({ desc }) {
+async function preview({ version, desc }) {
   const project = getProject();
   const { env } = getEnv();
 
@@ -39,7 +39,8 @@ async function preview({ desc }) {
       minify: true,
     },
     robot: [ENV.DEV, ENV.SIMULATION, ENV.PROD, ENV.UNKOWN].indexOf(env) + 1,
-    onProgressUpdate,
+    onProgressUpdate: (...args) =>
+      onProgressUpdate(...[{ version, desc }, '\n', args]),
   });
   return previewResult;
 }

@@ -28,14 +28,17 @@ async function upload({ version, desc }) {
   return uploadResult;
 }
 
-async function preview() {
+async function preview({ desc }) {
   const project = getProject();
+  const { env } = getEnv();
 
   const previewResult = await ci.preview({
     project,
+    desc,
     setting: {
       minify: true,
     },
+    robot: [ENV.DEV, ENV.SIMULATION, ENV.PROD, ENV.UNKOWN].indexOf(env) + 1,
     onProgressUpdate,
   });
   return previewResult;

@@ -10,8 +10,10 @@ program.version(
   fs.readJSONSync(path.resolve(__dirname, 'package.json')).version
 );
 
-program.command('preview').action(async () => {
-  const result = await ciPreview();
+program.command('preview').action(async (args) => {
+  const result = await ciPreview({
+    ...convertVersionAndDesc(args),
+  });
 
   console.log(result);
 });

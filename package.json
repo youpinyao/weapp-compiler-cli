@@ -29,6 +29,9 @@
     "miniprogram-ci": "^1.6.1",
     "react-dev-utils": "^11.0.4"
   },
+  "engines": {
+    "node": ">=14.17.1"
+  },
   "devDependencies": {
     "eslint": "^7.29.0"
   }

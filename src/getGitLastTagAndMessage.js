@@ -7,6 +7,7 @@ module.exports = () => {
   const message = getString(msg)
     .split('\n')
     .filter((item) => !!item)
+    .splice(0, 10)
     .join(' ');
 
   return {

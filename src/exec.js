@@ -1,5 +1,5 @@
 const spawn = require('cross-spawn');
-const { projectPath, cliPath } = require('./config');
+const { projectPath, getCliPath } = require('./config');
 
 module.exports = (
   args,
@@ -7,6 +7,8 @@ module.exports = (
     stdio: 'inherit',
   }
 ) => {
+  const cliPath = getCliPath();
+
   args.push('--project', projectPath);
 
   console.log(cliPath, args);

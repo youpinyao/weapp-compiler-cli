@@ -1,5 +1,5 @@
 const ci = require('miniprogram-ci');
-const { projectPath, privateKeyPath } = require('../config');
+const { projectPath, getPrivateKeyPath } = require('../config');
 const projectConfig = require('../projectConfig');
 
 module.exports = function getProject() {
@@ -11,7 +11,7 @@ module.exports = function getProject() {
     appid,
     type: 'miniProgram',
     projectPath,
-    privateKeyPath,
+    privateKeyPath: getPrivateKeyPath(),
     ignores,
   });
   return project;

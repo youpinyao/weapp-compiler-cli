@@ -42,15 +42,19 @@ if (fs.pathExistsSync(path.resolve(process.cwd(), 'package.json'))) {
 if (!fs.pathExistsSync(projectPath)) {
   throw new Error(`${projectPath} is no exist`);
 }
-if (!fs.pathExistsSync(cliPath)) {
-  throw new Error(`${cliPath} is no exist`);
-}
-if (!fs.pathExistsSync(privateKeyPath)) {
-  throw new Error(`${privateKeyPath} is no exist`);
-}
 
 module.exports = {
   projectPath,
-  cliPath,
-  privateKeyPath,
+  getCliPath() {
+    if (!fs.pathExistsSync(cliPath)) {
+      throw new Error(`${cliPath} is no exist`);
+    }
+    return cliPath;
+  },
+  getPrivateKeyPath() {
+    if (!fs.pathExistsSync(privateKeyPath)) {
+      throw new Error(`${privateKeyPath} is no exist`);
+    }
+    return privateKeyPath;
+  },
 };

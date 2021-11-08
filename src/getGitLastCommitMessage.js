@@ -1,7 +1,7 @@
 const spawn = require('cross-spawn');
 
 module.exports = function getGitLastCommitMessage() {
-  const getString = (output) => output.stdout.toString().trim();
+  const getString = (output) => (output.stdout || output.stderr || 'undefined').toString().trim();
   const msg = spawn.sync('git', ['show', '-q']);
   const message = getString(msg)
     .split('\n')

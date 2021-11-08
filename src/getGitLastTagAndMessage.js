@@ -1,7 +1,7 @@
 const spawn = require('cross-spawn');
 
 module.exports = () => {
-  const getString = (output) => output.stdout.toString().trim();
+  const getString = (output) => (output.stdout || output.stderr || 'undefined').toString().trim();
   const tag = spawn.sync('git', ['describe', '--abbrev=0', '--tags']);
   const msg = spawn.sync('git', ['show', '-q', getString(tag)]);
   const message = getString(msg)

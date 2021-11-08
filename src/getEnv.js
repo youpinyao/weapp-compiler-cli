@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require('fs-extra');
 const { projectPath } = require('./config');
-const ENV = require('./ENV');
+const ENV = require('./env');
 const envPath = path.join(projectPath, 'weapp.env.json');
 let env = {
   env: ENV.UNKOWN,

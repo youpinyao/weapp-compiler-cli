@@ -2,7 +2,7 @@ const addEnvPrefix = require('./addEnvPrefix');
 const getGitLastTagAndMessage = require('./getGitLastTagAndMessage');
 const getGitLastCommitMessage = require('./getGitLastCommitMessage');
 const getEnv = require('./getEnv');
-const ENV = require('./ENV');
+const ENV = require('./env');
 
 module.exports = function convertVersionAndDesc(args) {
   const params = {...args};

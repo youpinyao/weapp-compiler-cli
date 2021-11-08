@@ -2,7 +2,7 @@ const ci = require('miniprogram-ci');
 const clearConsole = require('react-dev-utils/clearConsole');
 const getEnv = require('../getEnv');
 const getProject = require('./getProject');
-const ENV = require('../ENV');
+const ENV = require('../env');
 
 const onProgressUpdate = (...args) => {
   clearConsole();

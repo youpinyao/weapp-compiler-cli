@@ -1,4 +1,5 @@
 const spawn = require('cross-spawn');
+const formatVersion = require('./formatVersion');
 
 module.exports = () => {
   const getString = (output) => (output.stdout || output.stderr || '').toString().trim();
@@ -11,7 +12,7 @@ module.exports = () => {
     .join(' ');
 
   return {
-    tag: tag.replace(/^v/g, ''),
+    tag: formatVersion(tag),
     message,
   };
 };

@@ -10,13 +10,16 @@ program.version(
   fs.readJSONSync(path.resolve(__dirname, 'package.json')).version
 );
 
-program.command('preview').action(async (args) => {
-  const result = await ciPreview({
-    ...convertVersionAndDesc(args),
-  });
+program
+  .command('preview')
+  .option('-d, --desc <desc>', '上传代码时的备注。')
+  .action(async (args) => {
+    const result = await ciPreview({
+      ...convertVersionAndDesc(args),
+    });
 
-  console.log(result);
-});
+    console.log(result);
+  });
 
 program
   .command('upload')

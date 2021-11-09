@@ -11,9 +11,12 @@ module.exports = function convertVersionAndDesc(args) {
   const commitMessage = getGitLastCommitMessage();
   const { env } = getEnv();
 
+  // 如果参数没传，默认去 git last tag
   if (!params.version) {
     params.version = tag;
   }
+
+  // 如果参数没传，默认去 git last message，非正式环境取 last commit message
   if (!params.desc) {
     params.desc = message;
     if (env !== ENV.PROD) {

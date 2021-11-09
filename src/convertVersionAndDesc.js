@@ -6,7 +6,7 @@ const ENV = require('./env');
 const formatVersion = require('./formatVersion');
 
 module.exports = function convertVersionAndDesc(args) {
-  const params = {...args};
+  const params = { ...args };
   const { tag, message } = getGitLastTagAndMessage();
   const commitMessage = getGitLastCommitMessage();
   const { env } = getEnv();
@@ -16,10 +16,9 @@ module.exports = function convertVersionAndDesc(args) {
   }
   if (!params.desc) {
     params.desc = message;
-  }
-
-  if (env !== ENV.PROD) {
-    params.desc = commitMessage;
+    if (env !== ENV.PROD) {
+      params.desc = commitMessage;
+    }
   }
 
   params.version = formatVersion(params.version);

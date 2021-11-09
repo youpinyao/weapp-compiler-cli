@@ -1,7 +1,7 @@
 module.exports = function formatVersion(ver) {
   let version = `${ver || ''}`.replace(/^v/g, '');
 
-  if (isNaN(version)) {
+  if (isNaN(parseFloat(version))) {
     version = '1.0.0';
   }
 

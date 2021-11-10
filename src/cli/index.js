@@ -9,7 +9,7 @@ const onProgressUpdate = (...args) => {
   console.log(...args);
 };
 
-async function upload({ version, desc }) {
+async function upload({ version, desc, quiet }) {
   const project = getProject();
   const { env } = getEnv();
 
@@ -18,17 +18,21 @@ async function upload({ version, desc }) {
     version,
     desc,
     setting: {
-      minify: true,
+      minifyWXML: true,
+      minifyWXSS: true,
     },
     robot: [ENV.DEV, ENV.SIMULATION, ENV.PROD, ENV.UNKOWN].indexOf(env) + 1,
-    onProgressUpdate: (...args) =>
-      onProgressUpdate(...[{ version, desc }, '\n', args]),
+    onProgressUpdate: (...args) => {
+      if (quiet !== true) {
+        onProgressUpdate(...[{ version, desc }, '\n', args]);
+      }
+    },
   });
 
   return uploadResult;
 }
 
-async function preview({ version, desc }) {
+async function preview({ version, desc, quiet }) {
   const project = getProject();
   const { env } = getEnv();
 
@@ -36,11 +40,15 @@ async function preview({ version, desc }) {
     project,
     desc,
     setting: {
-      minify: true,
+      minifyWXML: true,
+      minifyWXSS: true,
     },
     robot: [ENV.DEV, ENV.SIMULATION, ENV.PROD, ENV.UNKOWN].indexOf(env) + 1,
-    onProgressUpdate: (...args) =>
-      onProgressUpdate(...[{ version, desc }, '\n', args]),
+    onProgressUpdate: (...args) => {
+      if (quiet !== true) {
+        onProgressUpdate(...[{ version, desc }, '\n', args]);
+      }
+    },
   });
   return previewResult;
 }

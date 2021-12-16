@@ -11,6 +11,7 @@ module.exports = {
   globals: {
     process: true,
     __dirname: true,
+    Buffer: true
   },
   rules: {},
 };

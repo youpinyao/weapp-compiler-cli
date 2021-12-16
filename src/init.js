@@ -12,20 +12,21 @@ if (fs.existsSync(packagePath)) {
     'weapp-cli:quit': 'weapp-cli quit',
     'weapp-cli:reset-fileutils': 'weapp-cli reset-fileutils',
     'weapp-ci:upload': 'weapp-cli upload',
-    'weapp-ci:preview': 'weapp-cli preview'
-  }
+    'weapp-ci:preview': 'weapp-cli preview',
+    'weapp-publish': 'weapp-publish',
+  };
   let hasChange = false;
 
   if (!package.scripts) {
     package.scripts = {};
   }
 
-  Object.keys(scripts).forEach(key => {
-    if(!package.scripts[key]) {
+  Object.keys(scripts).forEach((key) => {
+    if (!package.scripts[key]) {
       package.scripts[key] = scripts[key];
       hasChange = true;
     }
-  })
+  });
 
   if (hasChange) {
     fs.writeFileSync(packagePath, JSON.stringify(package, null, 2));

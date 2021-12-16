@@ -12,7 +12,8 @@
   },
   "bin": {
     "weapp-cli": "cli.js",
-    "weapp-ci": "ci.js"
+    "weapp-ci": "ci.js",
+    "weapp-publish": "publish.mjs"
   },
   "author": "youpinyao",
   "license": "ISC",
@@ -21,13 +22,17 @@
   },
   "homepage": "https://github.com/youpinyao/weapp-compiler-cli#readme",
   "dependencies": {
+    "chalk": "^4.1.2",
     "commander": "^8.0.0",
     "cross-spawn": "^7.0.3",
     "dayjs": "^1.10.7",
     "enquirer": "^2.3.6",
     "fs-extra": "^10.0.0",
-    "miniprogram-ci": "^1.6.1",
-    "react-dev-utils": "^11.0.4"
+    "jimp": "^0.16.1",
+    "miniprogram-ci": "^1.0.1",
+    "puppeteer": "^13.0.0",
+    "react-dev-utils": "^12.0.0",
+    "terminal-img": "^2.0.24"
   },
   "engines": {
     "node": ">=14.17.1"

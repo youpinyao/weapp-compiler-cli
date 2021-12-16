@@ -160,22 +160,41 @@ program.action(async () => {
 
   // 检测是否出现提交弹窗
   await page.waitForFunction(() => {
-    const buttons = document.querySelectorAll(
-      '.weui-desktop-dialog .weui-desktop-dialog__ft .weui-desktop-btn_wrp .weui-desktop-btn.weui-desktop-btn_primary'
+    const titles = document.querySelectorAll(
+      '.weui-desktop-dialog .weui-desktop-dialog__hd .weui-desktop-dialog__title'
     );
+
+    const title = [...titles].filter(
+      (item) => item.innerText.trim() === '发布线上版本'
+    )[0];
+
+    const buttons = title
+      ? title.parentElement.parentElement.querySelectorAll(
+          '.weui-desktop-dialog__ft .weui-desktop-btn_wrp.mr .weui-desktop-btn.weui-desktop-btn_primary'
+        )
+      : [];
     const button = [...buttons].filter(
       (item) => item.innerText.trim() === '提交'
     )[0];
-
 
     return !!button;
   });
 
   // 点击提交按钮
   const submitButton = await page.evaluateHandle(() => {
-    const buttons = document.querySelectorAll(
-      '.weui-desktop-dialog .weui-desktop-dialog__ft .weui-desktop-btn_wrp .weui-desktop-btn.weui-desktop-btn_primary'
+    const titles = document.querySelectorAll(
+      '.weui-desktop-dialog .weui-desktop-dialog__hd .weui-desktop-dialog__title'
     );
+
+    const title = [...titles].filter(
+      (item) => item.innerText.trim() === '发布线上版本'
+    )[0];
+
+    const buttons = title
+      ? title.parentElement.parentElement.querySelectorAll(
+          '.weui-desktop-dialog__ft .weui-desktop-btn_wrp.mr .weui-desktop-btn.weui-desktop-btn_primary'
+        )
+      : [];
     const button = [...buttons].filter(
       (item) => item.innerText.trim() === '提交'
     )[0];
@@ -193,7 +212,11 @@ program.action(async () => {
     const submitQrcode = document.querySelector(
       '.weui-desktop-dialog__bd .dialog_bd .weui-desktop-qrcheck .weui-desktop-qrcheck__qrcode-area .weui-desktop-qrcheck__img'
     );
-    return !!(submitQrcode && submitQrcode.getAttribute('src') && submitQrcode.complete);
+    return !!(
+      submitQrcode &&
+      submitQrcode.getAttribute('src') &&
+      submitQrcode.complete
+    );
   });
 
   // 获取二维码

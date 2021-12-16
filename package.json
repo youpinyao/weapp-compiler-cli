@@ -13,7 +13,7 @@
   "bin": {
     "weapp-cli": "cli.js",
     "weapp-ci": "ci.js",
-    "weapp-publish": "publish.mjs"
+    "weapp-publish": "publish.js"
   },
   "author": "youpinyao",
   "license": "ISC",

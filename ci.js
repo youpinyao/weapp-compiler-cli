@@ -3,7 +3,7 @@
 const program = require('commander');
 const fs = require('fs-extra');
 const path = require('path');
-const { ciUpload, ciPreview } = require('./src/cli');
+const { ciUpload, ciPreview } = require('./src/ci');
 const convertVersionAndDesc = require('./src/convertVersionAndDesc');
 
 program.version(

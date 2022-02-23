@@ -15,7 +15,7 @@ weapp-ci upload
 -d, --desc <desc> // 上传代码时的备注。
 ```
 
-#preview
+# preview
 
 ```cmd
 weapp-ci preview

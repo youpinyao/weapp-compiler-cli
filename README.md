@@ -56,7 +56,7 @@ weapp-cli upload
 weapp-cli open
 ```
 
-## open 关闭项目窗口
+## close 关闭项目窗口
 
 - [官方 API](https://developers.weixin.qq.com/miniprogram/dev/devtools/cli.html#关闭项目窗口)
 
@@ -64,7 +64,7 @@ weapp-cli open
 weapp-cli close
 ```
 
-## open 关闭工具
+## quit 关闭工具
 
 - [官方 API](https://developers.weixin.qq.com/miniprogram/dev/devtools/cli.html#关闭工具)
 
@@ -72,7 +72,7 @@ weapp-cli close
 weapp-cli quit
 ```
 
-## open 重建文件监听
+## reset-fileutils 重建文件监听
 
 - [官方 API](https://developers.weixin.qq.com/miniprogram/dev/devtools/cli.html#重建文件监听)
 

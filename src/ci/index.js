@@ -9,9 +9,13 @@ const onProgressUpdate = (...args) => {
   console.log(...args);
 };
 
-async function upload({ version, desc, quiet }) {
+async function upload({ version, desc, quiet, env: environment }) {
   const project = getProject();
-  const { env } = getEnv();
+  let { env } = getEnv();
+
+  if (environment) {
+    env = environment;
+  }
 
   const uploadResult = await ci.upload({
     project,
@@ -32,9 +36,13 @@ async function upload({ version, desc, quiet }) {
   return uploadResult;
 }
 
-async function preview({ version, desc, quiet }) {
+async function preview({ version, desc, quiet, env: environment }) {
   const project = getProject();
-  const { env } = getEnv();
+  let { env } = getEnv();
+
+  if (environment) {
+    env = environment;
+  }
 
   const previewResult = await ci.preview({
     project,

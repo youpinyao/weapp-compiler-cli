@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const program = require('commander');
+const { Option } = require('commander');
 const fs = require('fs-extra');
 const path = require('path');
 const { ciUpload, ciPreview } = require('./src/ci');
@@ -15,7 +16,7 @@ program
   .command('preview')
   .option('-d, --desc <desc>', '上传代码时的备注。')
   .option('-q, --quiet', '安静模式，打印减少')
-  .option('-e, --env', 'development simulation production')
+  .addOption(new Option('-e, --env <env>', '环境变量').choices(['development', 'simulation', 'production']))
   .action(async (args) => {
     if (args.env) {
       setEnv({
@@ -34,7 +35,7 @@ program
   .option('-v, --version <version>', '上传代码，version 指定版本号。')
   .option('-d, --desc <desc>', '上传代码时的备注。')
   .option('-q, --quiet', '安静模式，打印减少')
-  .option('-e, --env', 'development simulation production')
+  .addOption(new Option('-e, --env <env>', '环境变量').choices(['development', 'simulation', 'production']))
   .action(async (args) => {
     if (args.env) {
       setEnv({

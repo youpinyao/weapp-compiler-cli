@@ -1,21 +1,16 @@
 const ci = require('miniprogram-ci');
 const clearConsole = require('react-dev-utils/clearConsole');
-const getEnv = require('../getEnv');
+const { getEnv, ENV } = require('../env');
 const getProject = require('./getProject');
-const ENV = require('../env');
 
 const onProgressUpdate = (...args) => {
   clearConsole();
   console.log(...args);
 };
 
-async function upload({ version, desc, quiet, env: environment }) {
+async function upload({ version, desc, quiet }) {
   const project = getProject();
   let { env } = getEnv();
-
-  if (environment) {
-    env = environment;
-  }
 
   const uploadResult = await ci.upload({
     project,
@@ -36,13 +31,9 @@ async function upload({ version, desc, quiet, env: environment }) {
   return uploadResult;
 }
 
-async function preview({ version, desc, quiet, env: environment }) {
+async function preview({ version, desc, quiet }) {
   const project = getProject();
   let { env } = getEnv();
-
-  if (environment) {
-    env = environment;
-  }
 
   const previewResult = await ci.preview({
     project,

@@ -5,6 +5,7 @@ const fs = require('fs-extra');
 const path = require('path');
 const { ciUpload, ciPreview } = require('./src/ci');
 const convertVersionAndDesc = require('./src/convertVersionAndDesc');
+const { setEnv } = require('./src/env');
 
 program.version(
   fs.readJSONSync(path.resolve(__dirname, 'package.json')).version
@@ -16,6 +17,11 @@ program
   .option('-q, --quiet', '安静模式，打印减少')
   .option('-e, --env', 'development simulation production')
   .action(async (args) => {
+    if (args.env) {
+      setEnv({
+        env: args.env,
+      });
+    }
     const result = await ciPreview({
       ...convertVersionAndDesc(args),
     });
@@ -30,6 +36,11 @@ program
   .option('-q, --quiet', '安静模式，打印减少')
   .option('-e, --env', 'development simulation production')
   .action(async (args) => {
+    if (args.env) {
+      setEnv({
+        env: args.env,
+      });
+    }
     const result = await ciUpload({
       ...convertVersionAndDesc(args),
     });

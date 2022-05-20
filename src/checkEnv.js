@@ -1,7 +1,5 @@
-
 const { Confirm } = require('enquirer');
-const getEnv = require("./getEnv");
-const ENV = require('./env');
+const { getEnv, ENV } = require('./env');
 
 const { env } = getEnv();
 

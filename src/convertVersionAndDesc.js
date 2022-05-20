@@ -1,8 +1,7 @@
 const addEnvPrefix = require('./addEnvPrefix');
 const getGitLastTagAndMessage = require('./getGitLastTagAndMessage');
 const getGitLastCommitMessage = require('./getGitLastCommitMessage');
-const getEnv = require('./getEnv');
-const ENV = require('./env');
+const { getEnv, ENV } = require('./env');
 const formatVersion = require('./formatVersion');
 
 module.exports = function convertVersionAndDesc(args) {
@@ -10,11 +9,6 @@ module.exports = function convertVersionAndDesc(args) {
   const { tag, message } = getGitLastTagAndMessage();
   const commitMessage = getGitLastCommitMessage();
   let { env } = getEnv();
-
-  // 如果存在env 变量 就取值
-  if (params.env) {
-    env = params.env;
-  }
 
   // 如果参数没传，默认去 git last tag
   if (!params.version) {

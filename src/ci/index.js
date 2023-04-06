@@ -19,6 +19,11 @@ async function upload({ version, desc, quiet }) {
     setting: {
       minifyWXML: true,
       minifyWXSS: true,
+      minifyJS: true,
+      minify: true,
+      es6: true,
+      es7: true,
+      autoPrefixWXSS: true,
     },
     robot: [ENV.DEV, ENV.SIMULATION, ENV.PROD, ENV.UNKOWN].indexOf(env) + 1,
     onProgressUpdate: (...args) => {
@@ -41,6 +46,11 @@ async function preview({ version, desc, quiet }) {
     setting: {
       minifyWXML: true,
       minifyWXSS: true,
+      minifyJS: true,
+      minify: true,
+      es6: true,
+      es7: true,
+      autoPrefixWXSS: true,
     },
     robot: [ENV.DEV, ENV.SIMULATION, ENV.PROD, ENV.UNKOWN].indexOf(env) + 1,
     onProgressUpdate: (...args) => {

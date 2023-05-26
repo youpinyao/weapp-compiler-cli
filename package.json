@@ -1,6 +1,6 @@
 {
   "name": "weapp-compiler-cli",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "secondary packaging https://developers.weixin.qq.com/miniprogram/dev/devtools/cli.html and https://developers.weixin.qq.com/miniprogram/dev/devtools/ci.html",
   "main": "index.js",
   "scripts": {

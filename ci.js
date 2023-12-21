@@ -7,10 +7,15 @@ const path = require('path');
 const { ciUpload, ciPreview } = require('./src/ci');
 const convertVersionAndDesc = require('./src/convertVersionAndDesc');
 const { setEnv } = require('./src/env');
+const { init } = require('./src/ci/config');
 
 program.version(
   fs.readJSONSync(path.resolve(__dirname, 'package.json')).version
 );
+
+program.command('init').action(() => {
+  init();
+});
 
 program
   .command('preview')

@@ -2,6 +2,7 @@ const ci = require('miniprogram-ci');
 const clearConsole = require('react-dev-utils/clearConsole');
 const { getEnv, ENV } = require('../env');
 const getProject = require('./getProject');
+const { getConfig } = require('./config');
 
 const onProgressUpdate = (...args) => {
   clearConsole();
@@ -24,6 +25,7 @@ async function upload({ version, desc, quiet }) {
       es6: true,
       es7: true,
       autoPrefixWXSS: true,
+      ...getConfig(),
     },
     robot: [ENV.DEV, ENV.SIMULATION, ENV.PROD, ENV.UNKOWN].indexOf(env) + 1,
     onProgressUpdate: (...args) => {
@@ -51,6 +53,7 @@ async function preview({ version, desc, quiet }) {
       es6: true,
       es7: true,
       autoPrefixWXSS: true,
+      ...getConfig(),
     },
     robot: [ENV.DEV, ENV.SIMULATION, ENV.PROD, ENV.UNKOWN].indexOf(env) + 1,
     onProgressUpdate: (...args) => {

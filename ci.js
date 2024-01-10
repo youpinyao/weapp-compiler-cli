@@ -35,16 +35,11 @@ program
       });
     }
 
-    try {
-      const result = await ciPreview({
-        ...convertVersionAndDesc(args),
-      });
+    const result = await ciPreview({
+      ...convertVersionAndDesc(args),
+    });
 
-      console.log(result);
-    } catch (error) {
-      console.error('CatchError', error);
-      process.exit(1);
-    }
+    console.log(result);
   });
 
 program
@@ -65,15 +60,11 @@ program
         env: args.env,
       });
     }
-    try {
-      const result = await ciUpload({
-        ...convertVersionAndDesc(args),
-      });
-      console.log(result);
-    } catch (error) {
-      console.error('CatchError', error);
-      process.exit(1);
-    }
+
+    const result = await ciUpload({
+      ...convertVersionAndDesc(args),
+    });
+    console.log(result);
   });
 
 program.parse(process.argv);

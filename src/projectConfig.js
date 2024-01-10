@@ -7,7 +7,7 @@ let projectConfig = {};
 if (fs.pathExistsSync(projectConfigPath)) {
   projectConfig = fs.readJSONSync(projectConfigPath);
 } else {
-  throw new Error(`${projectConfig} is no exist`);
+  throw new Error(`project.config.json is no exist`);
 }
 
 module.exports = projectConfig;

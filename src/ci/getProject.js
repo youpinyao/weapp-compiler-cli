@@ -1,16 +1,17 @@
 const ci = require('miniprogram-ci');
-const { projectPath, getPrivateKeyPath } = require('../config');
+const { getPrivateKeyPath } = require('../config');
 const projectConfig = require('../projectConfig');
+const { getConfig } = require('./config');
 
 module.exports = function getProject() {
   const { appid } = projectConfig;
+  const config = getConfig();
   const ignores = ['assets/**/*', '**/*.map', '*.map'];
-
 
   const project = new ci.Project({
     appid,
     type: 'miniProgram',
-    projectPath,
+    projectPath: config.projectPath,
     privateKeyPath: getPrivateKeyPath(),
     ignores,
   });

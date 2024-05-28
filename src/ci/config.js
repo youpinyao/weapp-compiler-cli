@@ -11,6 +11,7 @@ minify: true
 es6: true
 es7: true
 autoPrefixWXSS: true
+projectPath: dist
 `;
 
 let config;
@@ -26,6 +27,8 @@ module.exports = {
         const yaml = fs.readFileSync(configFilePath, 'utf-8');
 
         config = parse(yaml);
+
+        config.projectPath = path.resolve(process.cwd(), config.projectPath || 'dist');
       }
     }
     return config;

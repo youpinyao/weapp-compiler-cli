@@ -6,10 +6,10 @@ const ENV = {
   DEV: 'development',
   PROD: 'production',
   SIMULATION: 'simulation',
-  UNKOWN: 'unkown',
+  UNKNOWN: 'unknown',
 };
 let env = {
-  env: ENV.UNKOWN,
+  env: ENV.UNKNOWN,
 };
 
 if (fs.pathExistsSync(envPath)) {

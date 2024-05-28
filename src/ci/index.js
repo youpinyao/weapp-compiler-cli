@@ -27,7 +27,7 @@ async function upload({ version, desc, quiet }) {
       autoPrefixWXSS: true,
       ...getConfig(),
     },
-    robot: [ENV.DEV, ENV.SIMULATION, ENV.PROD, ENV.UNKOWN].indexOf(env) + 1,
+    robot: [ENV.DEV, ENV.SIMULATION, ENV.PROD, ENV.UNKNOWN].indexOf(env) + 1,
     onProgressUpdate: (...args) => {
       if (quiet !== true) {
         onProgressUpdate(...[{ version, desc }, '\n', args]);
@@ -55,7 +55,7 @@ async function preview({ version, desc, quiet }) {
       autoPrefixWXSS: true,
       ...getConfig(),
     },
-    robot: [ENV.DEV, ENV.SIMULATION, ENV.PROD, ENV.UNKOWN].indexOf(env) + 1,
+    robot: [ENV.DEV, ENV.SIMULATION, ENV.PROD, ENV.UNKNOWN].indexOf(env) + 1,
     onProgressUpdate: (...args) => {
       if (quiet !== true) {
         onProgressUpdate(...[{ version, desc }, '\n', args]);

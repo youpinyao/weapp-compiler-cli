@@ -1,81 +1,22 @@
-# weapp-cli
+# weapp-ci
 
-```text
-通过命令行调用安装完成的工具可执行文件，完成登录、预览、上传、自动化测试等操作。
+[https://developers.weixin.qq.com/miniprogram/dev/devtools/ci.html](https://developers.weixin.qq.com/miniprogram/dev/devtools/ci.html)
 
-要使用命令行，注意首先需要在开发者工具的设置 -> 安全设置中开启服务端口。
 
-命令行工具所在位置：
 
-macOS: <安装路径>/Contents/MacOS/cli
+# upload
 
-Windows: <安装路径>/cli.bat
-```
-
-[https://developers.weixin.qq.com/miniprogram/dev/devtools/cli.html](https://developers.weixin.qq.com/miniprogram/dev/devtools/cli.html)
-
-## 配置
-
-- 配置微信开发者工具安装路径（正常不需要配置，除非使用者安装在特定的目录）
-
-```json
-// 项目根目录 package.json
-
-{
-  "weappCliConfig": {
-    "cliPath": "/Applications/wechatwebdevtools.app/Contents/MacOS/cli",
-    "cliPath": "C:\\Program Files (x86)\\Tencent\\微信web开发者工具\\cli.bat",
-    "projectPath": "dist",
-    "privateKeyPath": "private.key"
-  }
-}
-```
-
-## preview 预览
-
-- [官方 API](https://developers.weixin.qq.com/miniprogram/dev/devtools/cli.html#预览)
-
-```cmd
-weapp-cli preview
-```
-
-## upload 上传代码
-
-- [官方 API](https://developers.weixin.qq.com/miniprogram/dev/devtools/cli.html#上传代码)
 - 自动填写 最新 git tag 和 message
 
 ```cmd
-weapp-cli upload
+weapp-ci upload
+
+-v, --version <version> // 上传代码，version 指定版本号
+-d, --desc <desc> // 上传代码时的备注。
 ```
 
-## open 启动工具
-
-- [官方 API](https://developers.weixin.qq.com/miniprogram/dev/devtools/cli.html#启动工具)
+# preview
 
 ```cmd
-weapp-cli open
-```
-
-## close 关闭项目窗口
-
-- [官方 API](https://developers.weixin.qq.com/miniprogram/dev/devtools/cli.html#关闭项目窗口)
-
-```cmd
-weapp-cli close
-```
-
-## quit 关闭工具
-
-- [官方 API](https://developers.weixin.qq.com/miniprogram/dev/devtools/cli.html#关闭工具)
-
-```cmd
-weapp-cli quit
-```
-
-## reset-fileutils 重建文件监听
-
-- [官方 API](https://developers.weixin.qq.com/miniprogram/dev/devtools/cli.html#重建文件监听)
-
-```cmd
-weapp-cli reset-fileutils
+weapp-ci preview
 ```

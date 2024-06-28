@@ -1,0 +1,9 @@
+
+minifyWXML: true
+minifyWXSS: true
+minifyJS: true
+minify: true
+es6: true
+es7: true
+autoPrefixWXSS: true
+projectPath: dist

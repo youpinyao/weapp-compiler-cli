@@ -11,8 +11,7 @@
     "url": "git+https://github.com/youpinyao/weapp-compiler-cli.git"
   },
   "bin": {
-    "weapp-cli": "cli.js",
-    "weapp-ci": "ci.js"
+    "weapp-ci": "index.js"
   },
   "author": "youpinyao",
   "license": "ISC",

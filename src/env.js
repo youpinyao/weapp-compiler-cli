@@ -1,7 +1,6 @@
 const path = require('path');
 const fs = require('fs-extra');
-const { projectPath } = require('./config');
-const envPath = path.join(projectPath, 'weapp.env.json');
+const { getConfig } = require('./config');
 const ENV = {
   DEV: 'development',
   PROD: 'production',
@@ -12,16 +11,20 @@ let env = {
   env: ENV.UNKNOWN,
 };
 
-if (fs.pathExistsSync(envPath)) {
-  try {
-    env = fs.readJSONSync(envPath);
-  } catch (error) {
-    console.log(error);
-  }
-}
-
 module.exports = {
   ENV,
-  getEnv: () => env,
+  getEnv: () => {
+    const envPath = path.join(getConfig().projectPath, 'weapp.env.json');
+    if (fs.pathExistsSync(envPath)) {
+      try {
+        env = fs.readJSONSync(envPath);
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      throw new Error(`${envPath} 不能存在，结构为 {"env": "development" | "production" | "simulation"}`)
+    }
+    return env;
+  },
   setEnv: (environment) => (env = environment),
 };

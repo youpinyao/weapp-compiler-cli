@@ -4,10 +4,10 @@ const program = require('commander');
 const { Option } = require('commander');
 const fs = require('fs-extra');
 const path = require('path');
-const { ciUpload, ciPreview } = require('./src/ci');
+const { ciUpload, ciPreview } = require('./src');
 const convertVersionAndDesc = require('./src/convertVersionAndDesc');
 const { setEnv } = require('./src/env');
-const { init } = require('./src/ci/config');
+const { init } = require('./src/config');
 
 program.version(
   fs.readJSONSync(path.resolve(__dirname, 'package.json')).version

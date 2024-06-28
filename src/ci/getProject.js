@@ -1,6 +1,6 @@
 const ci = require('miniprogram-ci');
 const { getPrivateKeyPath } = require('../config');
-const projectConfig = require('../projectConfig');
+const projectConfig = require('./projectConfig');
 const { getConfig } = require('./config');
 
 module.exports = function getProject() {

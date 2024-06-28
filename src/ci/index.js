@@ -1,6 +1,6 @@
 const ci = require('miniprogram-ci');
 const clearConsole = require('react-dev-utils/clearConsole');
-const { getEnv, ENV } = require('../env');
+const { getEnv, ENV } = require('./env');
 const getProject = require('./getProject');
 const { getConfig } = require('./config');
 

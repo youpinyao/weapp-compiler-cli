@@ -31,7 +31,7 @@
     "node": ">=14.17.1"
   },
   "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
+    "registry": "https://artifactory.antasoc.com/artifactory/api/npm/npm-virtual/"
   },
   "devDependencies": {
     "eslint": "^7.29.0"

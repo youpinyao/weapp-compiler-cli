@@ -1,7 +1,7 @@
 const path = require('path');
 const yaml = require('yaml');
 const fse = require('fs-extra');
-const weappEnv = path.resolve(process.cwd(), '.weapp.env');
+const weappEnv = path.resolve(process.cwd(), '.weapp.env.yaml');
 const { getConfig } = require('./config');
 const ENV = {
   DEV: 'development',
